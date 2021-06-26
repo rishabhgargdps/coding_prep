@@ -1,4 +1,5 @@
 //we use topological sorting to do this. We can also use Bellman-Ford and even better with Djikstra than Bellman-Ford
+//we should not have cycles in the graph for this algorithm. Dijkstra can have cycles and Bellman-Ford can also have negative weights
 vector<int> BFS(const vector<vector<int>> &adj, vector<int> &indegree)
 {
     queue<int> q;
