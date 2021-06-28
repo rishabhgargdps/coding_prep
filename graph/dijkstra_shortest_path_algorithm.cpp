@@ -10,12 +10,12 @@ vector<int> dijkstraShortestPath(vector<vector<int>> &graph, int s)
     int v = graph.size();
     vector<int> dist(v, INT_MAX);
     dist[s] = 0;
-    vector<bool> finalised[v] = {false};
+    vector<bool> finalised(v, false);
     for (int count = 0; count < v - 1; count++)
     {
         int u = -1;
         for (int i = 0; i < v; i++)
-        { //this loop can be replaced by priority queue
+        { //this loop can be replaced by priority queue (to pick the minimum key from the vector)
             if (!finalised[i] && (u == -1 || dist[i] < dist[u]))
                 u = i;
         }
