@@ -6,7 +6,7 @@ bool DFSDetect(vector<vector<int>> adj, int s, bool visited[], int parent)
     {
         if (!visited[x])
         {
-            DFSDetect(adj, x, visited, s);
+            if(DFSDetect(adj, x, visited, s)) return true;
         }
         else if (x != parent)
         {

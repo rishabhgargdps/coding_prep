@@ -7,9 +7,9 @@ void DFS(vector<vector<int>> adj, int s, bool visited[], stack<int>& stk)
         if (!visited[x])
         {
             DFS(adj, x, visited);
-            stk.push(x);
         }
     }
+    stk.push(s);
 }
 
 int main()

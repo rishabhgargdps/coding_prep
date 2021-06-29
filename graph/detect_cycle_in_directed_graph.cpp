@@ -5,9 +5,9 @@ bool DFS(vector<vector<int>> adj, int s, bool visited[], bool recSt[])
     recSt[s] = true;
     for (int x : adj[s])
     {
-        if (!visited[x] && DFS(adj, x, visited, recSt))
+        if (!visited[x])
         {
-            return true;
+            if(DFS(adj, x, visited, recSt)) return true;
         }
         else if (recSt[x])
         {
