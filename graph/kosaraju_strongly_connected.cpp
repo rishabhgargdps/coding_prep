@@ -62,10 +62,7 @@ int main()
     }
     transpose(graph);
     //reinitialize the visited array
-    for (int i = 0; i < visited.size(); i++)
-    {
-        visited[i] = false;
-    }
+    visited[i] = {false};
     while (!stk.empty())
     {
         if (!visited[stk.top()])
