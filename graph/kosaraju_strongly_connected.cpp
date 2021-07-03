@@ -16,9 +16,9 @@ void DFS_stack(vector<vector<int>> &graph, int s, bool visited[], stack<int> &st
         if (graph[s][i] != 0 && !visited[i])
         {
             DFS_stack(graph, i, visited, stk);
-            stk.push(i);
         }
     }
+    stk.push(i);
 }
 
 void transpose(vector<vector<int>> &graph)
