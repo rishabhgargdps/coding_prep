@@ -42,3 +42,37 @@ int main()
     //res has the result
     return 0;
 }
+
+//correct implementation
+vector<int> djikstra(vector<vector<int>> &graph, int n, int k)
+{ //here k is the source node
+
+    vector<array<int, 2>> graph[n + 1];
+
+    for (vector<int> it : times)
+    {
+        graph[it[0]].push_back({it[1], it[2]});
+    }
+
+    vector<int> distance(n + 1, INT_MAX);
+    distance[k] = 0;
+
+    priority_queue<array<int, 2>, vector<array<int, 2>>, greater<array<int, 2>>> pq;
+    pq.push({0, k});
+
+    while (!pq.empty())
+    {
+        int curr_node = pq.top()[1];
+        pq.pop();
+        for (array<int, 2> it : graph[curr_node])
+        {
+            int nextNode = it[0];
+            int timeWeight = it[1];
+            if (distance[nextNode] > distance[curr_node] + timeWeight)
+            {
+                distance[nextNode] = distance[curr_node] + timeWeight;
+                pq.push({distance[nextNode], nextNode});
+            }
+        }
+    }
+}
