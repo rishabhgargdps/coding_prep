@@ -1,6 +1,6 @@
 class Trie
 {
-public:
+private:
     struct TrieNode
     {
         TrieNode *child[26];
@@ -13,11 +13,13 @@ public:
                 child[i] = NULL;
             }
         }
-    }
+    };
+
+public:
     /** Initialize your data structure here. */
+    TrieNode *root = new TrieNode();
     Trie()
     {
-        TrieNode *root = new TrieNode();
     }
 
     /** Inserts a word into the trie. */
@@ -54,9 +56,9 @@ public:
         TrieNode *curr = root;
         for (int i = 0; i < prefix.length(); i++)
         {
-            if (curr->child[key[i] - 'a'] == NULL)
+            if (curr->child[prefix[i] - 'a'] == NULL)
                 return false;
-            curr = curr->child[key[i] - 'a'];
+            curr = curr->child[prefix[i] - 'a'];
         }
         return true;
     }
