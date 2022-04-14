@@ -13,6 +13,6 @@ public:
         return binary_search(nums, left, mid, target);
     }
     long long minimumTime(vector<int>& time, int totalTrips) {
-        return binary_search(time, 1ll, LLONG_MAX/time.size(), totalTrips);
+        return binary_search(time, 1ll, 1e14, totalTrips);
     }
 };
