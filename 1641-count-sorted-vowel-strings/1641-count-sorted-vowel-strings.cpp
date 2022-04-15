@@ -9,6 +9,7 @@ public:
                 dp[i][j]=dp[i][j-1]+(i>1?dp[i-1][j]:1);
             }
         }
+        return (n+4)*(n+3)*(n+2)*(n+1)/24;
         return dp[n][5];
     }
 };
