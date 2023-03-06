@@ -1,22 +1,15 @@
 class Solution {
 public:
     int findKthPositive(vector<int>& arr, int k) {
-        int index = 0, count = 0, curr_num = 1;
-        while(true) {
-            if(index == arr.size()) break;
-            if(curr_num == arr[index]) {
-                index++;
-                curr_num++;
-            }
-            else {
-                count++;
-                if(count == k) return curr_num;
-                curr_num++;
-            }
+        //find the numbers missing between a range of array: arr[index] - (index+1);
+        int left = 0, right = arr.size()-1;
+        while(left <= right) {
+            int mid = left + (right-left)/2;
+            int miss = arr[mid] - (mid+1);
+            if(miss < k) left = mid+1;
+            else right = mid-1;
         }
-        if(count < k) {
-            return arr.back() + k-count;
-        }
-        return -1;
+        if(right == -1) return k;
+        return arr[right] + k - (arr[right] - (right+1));
     }
 };
