@@ -15,10 +15,15 @@ public:
     vector<vector<int>> findSolution(CustomFunction& customfunction, int z) {
         vector<vector<int>>res;
         for(int i=1; i<=1000; i++) {
-            for(int j=1; j<=1000; j++) {
-                if(customfunction.f(i, j) == z) {
-                    res.push_back({i, j});
+            int left = 1, right = 1000;
+            while(left <= right) {
+                int mid = left + (right-left)/2;
+                if(customfunction.f(i, mid) == z) {
+                    res.push_back({i, mid});
+                    break;
                 }
+                else if(customfunction.f(i, mid) < z) left = mid+1;
+                else right = mid-1;
             }
         }
         return res;
