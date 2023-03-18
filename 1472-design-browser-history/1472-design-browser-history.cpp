@@ -1,35 +1,38 @@
 class BrowserHistory {
 public:
-    stack<string>stk1;
-    stack<string>stk2;
+    struct ListNode {
+        string val = "";
+        ListNode* prev = NULL;
+        ListNode* next = NULL;
+        ListNode() {}
+        ListNode(string val) {this->val = val;}
+    };
+    ListNode* head;
     BrowserHistory(string homepage) {
-        stk1.push(homepage);
+        head = new ListNode(homepage);
     }
     
     void visit(string url) {
-        stk1.push(url);
-        stack<string>stk3;
-        swap(stk2, stk3);
+        ListNode* curr = new ListNode(url);
+        head->next = curr;
+        curr->prev = head;
+        head = head->next;
     }
     
     string back(int steps) {
-        while(stk1.size() > 1 && steps > 0) {
+        while(head->prev != NULL && steps > 0) {
             steps--;
-            string top = stk1.top();
-            stk1.pop();
-            stk2.push(top);
+            head = head->prev;
         }
-        return stk1.top();
+        return head->val;
     }
     
     string forward(int steps) {
-        while(stk2.size() > 0 && steps > 0) {
+        while(head->next != NULL && steps > 0) {
             steps--;
-            string top = stk2.top();
-            stk2.pop();
-            stk1.push(top);
+            head = head->next;
         }
-        return stk1.top();
+        return head->val;
     }
 };
 
