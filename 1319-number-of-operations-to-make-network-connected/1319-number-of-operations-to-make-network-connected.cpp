@@ -20,10 +20,7 @@ public:
                 count++;
             }
         }
-        if(count == 1) return 0;
-        if(count > 1) {
-            if(n > connections.size()+1) return -1;
-        }
+        if(n > connections.size()+1) return -1;
         return count-1;
     }
 };
