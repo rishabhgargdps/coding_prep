@@ -1,9 +1,7 @@
 class Solution {
 public:
     int solve(vector<vector<int>>& piles, int pointer_index, int k, vector<vector<int>>& dp) {
-        if(pointer_index >= piles.size()) {
-            return 0;
-        }
+        if(pointer_index == piles.size()) return 0;
         if(dp[pointer_index][k] != -1) return dp[pointer_index][k];
         int maximum = solve(piles, pointer_index+1, k, dp);
         for(int j=0; j<piles[pointer_index].size(); j++) {
